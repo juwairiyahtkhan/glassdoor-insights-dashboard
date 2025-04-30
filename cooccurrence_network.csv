@@ -1,0 +1,11 @@
+Parent,Child,Count
+Development Value,Economic Value,367397
+Development Value,Social Value,710463
+Economic Value,Social Value,301946
+Development Value,Interest Value,85164
+Economic Value,Interest Value,30497
+Application Value,Development Value,122731
+Application Value,Economic Value,48627
+Application Value,Social Value,113763
+Interest Value,Social Value,74831
+Application Value,Interest Value,42063
