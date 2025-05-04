@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import base64
 from io import BytesIO
 from math import pi
+import os
 
 def get_dropdown_style(width="60%", margin="auto"):
     return {
@@ -35,7 +36,7 @@ def get_card_style(theme_value):
 # Load data
 df_avg = pd.read_csv('./CSV/firm-averages.csv')
 df_empat = pd.read_csv('./CSV/firm_empat_profile.csv')
-df_reviews = pd.read_csv('./CSV/df_reviews.csv')
+#df_reviews = pd.read_csv('./CSV/df_reviews.csv')
 df_yearly_ratings = pd.read_csv('./CSV/yearly_ratings.csv')
 df_empat_time = pd.read_csv('./CSV/empat_time_series.csv')
 df_topic_trends = pd.read_csv('./CSV/topic_trends.csv')
@@ -44,10 +45,25 @@ df_empat_sentiment = pd.read_csv('./CSV/empat_sentdistrib.csv')
 df_cooccurrence = pd.read_csv('./CSV/cooccurrence_network.csv')
 df_neglect = pd.read_csv('./CSV/neglect_index.csv')
 
+#Download df_reviews from Drive
+file_id = '142TTxN-Se3Jc7_HdqAhAafwgeowQJ-yz'
+gdrive_url = f'https://drive.google.com/uc?id={file_id}'
+local_path = 'df_reviews.csv'
+if not os.path.exists(local_path):
+    try:
+        import gdown
+    except ImportError:
+        import subprocess
+        subprocess.check_call(['pip', 'install', 'gdown'])
+        import gdown
+    gdown.download(gdrive_url, local_path, quiet=False)
+df_reviews = pd.read_csv(local_path)
+
 firms = df_reviews['firm'].unique()
 
 #Start dashboard
 dashboard = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.themes.DARKLY])
+server = dashboard.server
 dashboard.title = "Glassdoor Insights Dashboard"
 
 theme_toggle = html.Div([
