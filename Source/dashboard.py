@@ -593,16 +593,10 @@ def update_theme(theme_value):
         return {'backgroundColor': '#2b2b2b', 'color': 'white', 'minHeight': '100vh'}
     return {'backgroundColor': 'whitesmoke', 'color': 'black', 'minHeight': '100vh'}
 
-"""if __name__ == '__main__':
-    dashboard.run(debug=True)"""
-
-server = dashboard.server
-
 if __name__ == '__main__':
-    import os
     debug = False if os.environ.get('PYTHONANYWHERE_DOMAIN') else True
     dashboard.run_server(
         debug=debug,
         host='0.0.0.0', 
-        port=int(os.environ.get('PORT', 8050))
+        port=8080
     )
