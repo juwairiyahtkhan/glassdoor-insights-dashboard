@@ -4,15 +4,25 @@ This repository contains the source code and supporting csv files for the Glassd
 
 The structure of the repository is as follows:
 Source/
+
 │
+
 ├── dashboard.py          # Main Dash dashboard application to be run
+
 ├── analysis.py           # Scripts for data analysis
+
 ├── proc_dataset.py       # Data pre-processing and cleaning scripts
+
 ├── Bert_EmpAtModel.ipynb # Jupyter notebook for fine-tuning and using BERT
+
 ├── requirements.txt      # All libraries used 
+
 │
+
 └── CSV/
+
     ├── [various CSV files used by the app excluding df_reviews.csv]
+    
 
 How to Use:
 1. Download the entire Source Folder from this repository, including all its contents and the nested CSV folder.
